@@ -1,1 +1,3 @@
-<img [src]="elementUrl" [alt]="element()">
+@if (elementUrl()) {
+  <img [src]="elementUrl()" [alt]="element()">
+}

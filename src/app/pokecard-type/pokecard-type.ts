@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'app-pokecard-type',
@@ -30,7 +30,8 @@ export class PokecardType {
     fairy: 'https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/types/generation-viii/sword-shield/small/18.png'
   } as const;
 
-  get elementUrl(): string {
-    return (this.ELEMENTAL_TYPES as any)[this.element()] ?? '';
-  }
+ elementUrl = computed(() => {
+    const type = this.element() as keyof typeof this.ELEMENTAL_TYPES;
+    return this.ELEMENTAL_TYPES[type] ?? '';
+  });
 }
