@@ -1,4 +1,5 @@
 .pokecard {
+  container: pokecard / inline-size;
   border: 4px solid gold;
   border-radius: 3%;
   width: 200px;
@@ -14,6 +15,27 @@
     font-weight: bold;
     text-align: left;
     margin-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  &__types {
+    text-align: left;
+    margin-top: 3px;
+    display: flex;
+
+    &__title {
+      font-size: 8px;
+      font-weight: bold;
+      color: red;
+    }
+
+    &__item {
+      flex: 0 0 auto;
+      /* Don't grow/shrink, use natural size */
+      margin-right: -23%;
+      /* Overlap slightly */
+    }
+
   }
 
   &__stat {
@@ -26,11 +48,79 @@
       font-weight: bold;
       margin-right: 2px;
     }
+
+    &-value {
+      color: black;
+      font-weight: bold;
+    }
+  }
+
+  &__abilities {
+    margin-top: 3px;
+
+    &__title {
+      font-size: 8px;
+      font-weight: bold;
+      color: red;
+      margin-bottom: 5%;
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: row;
+
+      &--cost {
+        img {
+          width: 30%;
+          height: 30%;
+          padding-left: 10%;
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: 2%;
+          justify-content: center;
+        }
+
+        display: flex;
+        width: 15%;
+      }
+
+      &--item {
+        font-size: 7px;
+        text-align: left;
+        font-weight: bold;
+        width: 60%;
+
+        &--description {
+          font-size: 6px;
+          text-align: left;
+          font-weight: normal;
+          margin-top: 2px;
+        }
+      }
+
+      &--damage {
+        font-size: 10px;
+        text-align: center;
+        font-weight: bold;
+        width: 25%;
+        display: flex;
+        justify-content: center;
+      }
+    }
   }
 
   &__description {
-    font-size: 7px;
-    text-align: left;
-    margin-top: 3px;
+    display: flex;
+    margin-top: auto;
+    border: 2px solid darkgoldenrod;
+    padding: 0.2rem 0.3rem;
+    &--text {
+      margin: 0;
+      justify-content: center;
+      font-size: 6px;
+      font-weight: bold;
+      text-align: left;
+      font-style: italic;
+    }
   }
 }
