@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { PokecardArt } from '../pokecard-art/pokecard-art';
 import { PokecardType } from '../pokecard-type/pokecard-type';
+import { IPokecard } from './pokecard.interface';
+import { PokecardAbility } from '../pokecard-ability/pokecard-ability';
 
 @Component({
   selector: 'app-pokecard',
-  imports: [PokecardArt, PokecardType],
+  imports: [PokecardArt, PokecardType, PokecardAbility],
   templateUrl: './pokecard.html',
   styleUrl: './pokecard.scss',
 })
-export class Pokecard {}
+export class Pokecard {
+  data = input.required<IPokecard>();
+}

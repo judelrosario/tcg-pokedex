@@ -1,36 +1,27 @@
 <div class="pokecard">
     <div class="pokecard__name">
-        <span class="pokecard__name__title">Bulbasaur</span>
+        <span class="pokecard__name__title">{{data().name}}</span>
     </div>
     <div class="pokecard__types">
         <div class="pokecard__types__title">Types:</div>
-        <app-pokecard-type element="grass" class="pokecard__types__item"></app-pokecard-type>
-        <app-pokecard-type element="poison" class="pokecard__types__item"></app-pokecard-type>
+        <app-pokecard-type *ngFor="let type of data().type" [element]="type"
+            class="pokecard__types__item"></app-pokecard-type>
     </div>
     <div class="pokecard__stats">
         <div class="pokecard__stat">
             <span class="pokecard__stat-name">HP: </span>
-            <span class="pokecard__stat-value">40</span>
+            <span class="pokecard__stat-value">{{data().hp}}</span>
         </div>
     </div>
-    <app-pokecard-art></app-pokecard-art>
+
+    <app-pokecard-art [data]="data().image"></app-pokecard-art>
+    <div class="pokecard__title">Abilities:</div>
     <div class="pokecard__abilities">
-        <div class="pokecard__abilities__title">Abilities:</div>
-        <div class="pokecard__abilities__container">
-            <div class="pokecard__abilities__container--cost"><img
-                    src='https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/types/generation-viii/sword-shield/small/12.png'>
-            </div>
-            <div class="pokecard__abilities__container--item">
-                Leech Seed - <span class="pokecard__abilities__container--item--description">Unless all damage from this
-                    attack is
-                    prevented, you may remove 1 damage counter from Bulbasaur.</span>
-            </div>
-            <div class="pokecard__abilities__container--damage">20</div>
-        </div>
+        @for (ability of data().attacks; track ability.name) {
+        <app-pokecard-ability [data]="ability"></app-pokecard-ability>
+        }
     </div>
     <div class="pokecard__description">
-        <p class="pokecard__description--text">For some time after its birth, it uses the nutrients that are packed
-            into the seed on its back in order to grow. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lvl 13
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1</p>
+        <p class="pokecard__description--text">{{data().description}}</p>
     </div>
 </div>

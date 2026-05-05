@@ -1,1 +1,3 @@
-<app-pokecard></app-pokecard>
+@for (pokecard of pokecards; track pokecard.name) {
+    <app-pokecard [data]="pokecard"></app-pokecard>
+}
