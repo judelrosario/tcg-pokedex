@@ -1,46 +1,46 @@
 .abilities {
-    margin-top: 3px;
+  margin-top: 3px;
 
-    &__container {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2%;
+
+    &--cost {
+      app-pokecard-type {
+        width: 0.6rem;
+        height: 0.6rem;
+        padding-right: 0.2rem;
+        &:first-child {
+          margin-left: 0.2rem;
+        }
+      }
       display: flex;
-      flex-direction: row;
+      width: 15%;
+    }
 
-      &--cost {
-        img {
-          width: 30%;
-          height: 30%;
-          padding-left: 10%;
-          display: flex;
-          flex-wrap: wrap;
-          column-gap: 2%;
-          justify-content: center;
-        }
+    &--item {
+      font-size: 7px;
+      text-align: left;
+      font-weight: bold;
+      width: 60%;
+      margin-left: 1rem;
 
-        display: flex;
-        width: 15%;
-      }
-
-      &--item {
-        font-size: 7px;
+      &--description {
+        font-size: 6px;
         text-align: left;
-        font-weight: bold;
-        width: 60%;
-
-        &--description {
-          font-size: 6px;
-          text-align: left;
-          font-weight: normal;
-          margin-top: 2px;
-        }
-      }
-
-      &--damage {
-        font-size: 10px;
-        text-align: center;
-        font-weight: bold;
-        width: 25%;
-        display: flex;
-        justify-content: center;
+        font-weight: normal;
+        margin-top: 2px;
       }
     }
+
+    &--damage {
+      font-size: 10px;
+      text-align: center;
+      font-weight: bold;
+      width: 25%;
+      display: flex;
+      justify-content: center;
+    }
   }
+}

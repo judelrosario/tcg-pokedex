@@ -14,14 +14,14 @@ export class App {
   data = signal<IPokecard>({
     id: 1,
     name: 'Bulbasaur',
-    type: ['Grass', 'Poison'],
+    type: ['grass', 'poison'],
     hp: 45,
     description: 'A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon.',
     attacks: [
       {
         name: 'Vine Whip',
         damage: 45,
-        cost: ['Grass'],
+        cost: ['grass'],
         description: 'The target is struck with slender, whiplike vines to inflict damage.'
       }
     ],
@@ -30,20 +30,20 @@ export class App {
   data2 = signal<IPokecard>({
     id: 2,
     name: 'Ivysaur',
-    type: ['Grass', 'Poison'],
+    type: ['grass', 'poison'],
     hp: 60,
     description: 'When the bulb at his back grow large, it is said to be full of life.',
     attacks: [
       {
         name: 'Vine Whip',
         damage: 30,
-        cost: ['Grass','Normal','Normal'],
+        cost: ['grass','normal','normal'],
         description: ''
       },
       {
         name: 'Poisonpowder',
         damage: 20,
-        cost: ['Grass','Grass','Grass'],
+        cost: ['grass','grass','grass'],
         description: 'The defending Pokémon is now Poisoned.'
       }
     ],

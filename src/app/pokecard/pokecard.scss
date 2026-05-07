@@ -32,10 +32,10 @@
     &__item {
       flex: 0 0 auto;
       /* Don't grow/shrink, use natural size */
-      margin-right: -23%;
       /* Overlap slightly */
+      width: 0.6rem;
+      height: 0.6rem;
     }
-
   }
 
   &__stat {
@@ -54,12 +54,12 @@
       font-weight: bold;
     }
   }
-&__title {
-      font-size: 8px;
-      font-weight: bold;
-      color: red;
-      margin-bottom: 5%;
-    }
+  &__title {
+    font-size: 8px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 5%;
+  }
   &__description {
     display: flex;
     margin-top: auto;

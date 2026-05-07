@@ -4,8 +4,9 @@
     </div>
     <div class="pokecard__types">
         <div class="pokecard__types__title">Types:</div>
-        <app-pokecard-type *ngFor="let type of data().type" [element]="type"
-            class="pokecard__types__item"></app-pokecard-type>
+        @for (type of data().type; track $index) {
+          <app-pokecard-type [element]="type" class="pokecard__types__item"></app-pokecard-type>
+        }
     </div>
     <div class="pokecard__stats">
         <div class="pokecard__stat">
@@ -18,7 +19,7 @@
     <div class="pokecard__title">Abilities:</div>
     <div class="pokecard__abilities">
         @for (ability of data().attacks; track ability.name) {
-        <app-pokecard-ability [data]="ability"></app-pokecard-ability>
+        <app-pokecard-ability  [data]="ability"></app-pokecard-ability>
         }
     </div>
     <div class="pokecard__description">
