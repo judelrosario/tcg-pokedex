@@ -1,3 +1,6 @@
-@for (pokecard of pokecards; track pokecard.name) {
+<app-pokecard-search (searchResult)="onSearchResult($event)"></app-pokecard-search>
+@if (searchresult()!=='') {
+    @for (pokecard of searchpokecard(searchresult()); track pokecard.name) {
     <app-pokecard [data]="pokecard"></app-pokecard>
+}
 }

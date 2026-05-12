@@ -10,6 +10,7 @@
   padding-right: 5px;
   padding-left: 5px;
   margin-bottom: 6%;
+  
   &__name {
     font-size: 10px;
     font-weight: bold;
@@ -22,19 +23,13 @@
     text-align: left;
     margin-top: 3px;
     display: flex;
+    align-items: center;
 
     &__title {
       font-size: 8px;
       font-weight: bold;
       color: red;
-    }
-
-    &__item {
-      flex: 0 0 auto;
-      /* Don't grow/shrink, use natural size */
-      /* Overlap slightly */
-      width: 0.6rem;
-      height: 0.6rem;
+      margin-right: 4px;
     }
   }
 
@@ -42,30 +37,29 @@
     font-size: 8px;
     text-align: left;
     margin-top: 3px;
-
     &-name {
       color: red;
       font-weight: bold;
       margin-right: 2px;
     }
-
     &-value {
       color: black;
       font-weight: bold;
     }
   }
+
   &__title {
     font-size: 8px;
     font-weight: bold;
     color: red;
     margin-bottom: 5%;
   }
+
   &__description {
     display: flex;
     margin-top: auto;
     border: 2px solid darkgoldenrod;
     padding: 0.2rem 0.3rem;
-
     &--text {
       margin: 0;
       justify-content: center;

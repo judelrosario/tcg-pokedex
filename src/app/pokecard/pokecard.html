@@ -1,13 +1,12 @@
+
 <div class="pokecard">
     <div class="pokecard__name">
         <span class="pokecard__name__title">{{data().name}}</span>
     </div>
     <div class="pokecard__types">
-        <div class="pokecard__types__title">Types:</div>
-        @for (type of data().type; track $index) {
-          <app-pokecard-type [element]="type" class="pokecard__types__item"></app-pokecard-type>
-        }
-    </div>
+    <div class="pokecard__types__title">Types:</div>
+    <app-pokecard-type-holder [data]="data().type"></app-pokecard-type-holder>
+</div>
     <div class="pokecard__stats">
         <div class="pokecard__stat">
             <span class="pokecard__stat-name">HP: </span>
