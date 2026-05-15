@@ -1,4 +1,4 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 
 @Component({
   selector: 'app-pokecard-search',
@@ -7,6 +7,7 @@ import { Component, output, signal } from '@angular/core';
   styleUrl: './pokecard-search.scss',
 })
 export class PokecardSearch {
+  readonly placeholder = input.required<string>();
   readonly searchTerm = signal('');
   readonly searchResult = output <string>();
   onSearchInput(event: Event) {
@@ -17,3 +18,4 @@ export class PokecardSearch {
     this.searchResult.emit(this.searchTerm());
   }
 }
+

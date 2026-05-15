@@ -1,6 +1,13 @@
-<app-pokecard-search (searchResult)="onSearchResult($event)"></app-pokecard-search>
-@if (searchresult()!=='') {
-    @for (pokecard of searchpokecard(searchresult()); track pokecard.name) {
+<app-pokecard-search [placeholder]="'Search by name...'" (searchResult)="onSearchResult($event)"></app-pokecard-search>
+<app-pokecard-search [placeholder]="'Search by type...'" (searchResult)="onSearchResultType($event)"></app-pokecard-search>
+<app-pokecard-search [placeholder]="'Search by API...'" (searchResult)="onSearchResultAPI($event)"></app-pokecard-search>
+@if (searchresult() !== '') {
+  @for (pokecard of searchpokecard(searchresult()); track pokecard.name) {
     <app-pokecard [data]="pokecard"></app-pokecard>
+  }
 }
+@if (searchresultbytype() !== '') {
+  @for (pokecard of searchpokecardbytype(searchresultbytype()); track pokecard.type) {
+    <app-pokecard [data]="pokecard"></app-pokecard>
+  }
 }
