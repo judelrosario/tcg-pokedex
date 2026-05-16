@@ -21,7 +21,7 @@ export class App {
   }
   onSearchResultAPI($event: string) {
     console.log($event);
-    this.pokeAPI.searchPokecard($event).subscribe({next: (response) => {console.log(response)}});
+    this.pokeAPI.searchPokecardsByName($event).subscribe({next: (response) => {console.log(response)}});
   }
   onSearchResultType($event: string) {
     const input = $event;
