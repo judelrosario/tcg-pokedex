@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { IPokecard } from '../pokecard/pokecard.interface';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { PokeAPIResponse } from './interfaces/poke-api.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class PokeAPI {
   constructor(private http: HttpClient) {}
   private readonly API_URL = 'https://api.pokewallet.io';
   private readonly API_KEY = 'pk_test_95d8c5cb532ed95b68cc6547f5d7e32d3446d97ba2bd8aea';
-  private readonly SEARCH_ENDPOINT = `${this.API_URL}/cards/search`;
+  private readonly SEARCH_ENDPOINT = `${this.API_URL}/search`;
   private readonly ID_ENDPOINT = `${this.API_URL}/cards/pk_`;
   /* The line `private headers = new HttpHeaders({'X-API-Key': this.API_KEY});` is creating an instance
 of the HttpHeaders class with a custom header 'X-API-Key' set to the API key stored in the `API_KEY`
@@ -32,7 +33,7 @@ included in the request headers for authentication purposes. */
    */
   searchPokecardsByName(query: string) {
     const params = new HttpParams().set('limit', 100).set('page', 1);
-    return this.http.get<any>(`${this.SEARCH_ENDPOINT}?q=${query}%25BS`, {
+    return this.http.get<PokeAPIResponse>(`${this.SEARCH_ENDPOINT}?q=${query}%25BS`, {
       headers: this.headers,
       params,
     });
@@ -40,7 +41,13 @@ included in the request headers for authentication purposes. */
   searchPokecardByID(id: string) {
     return this.http.get<any>(`${this.ID_ENDPOINT}${id}`, { headers: this.headers });
   }
-
+  searchPokecardBatch(ids: string[]) {
+    for (const id of ids) {
+      this.searchPokecardByID(id).subscribe((data) => {
+        console.log(data);
+      });
+    }
+  }
   getdata() {
     const data = signal<IPokecard>({
       id: 1,

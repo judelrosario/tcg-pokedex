@@ -4,6 +4,7 @@ import { Pokecard } from './pokecard/pokecard';
 import { IPokecard } from './pokecard/pokecard.interface';
 import { PokecardSearch } from './pokecard-search/pokecard-search';
 import { PokeAPI } from './services/poke-api';
+import { Result } from './services/interfaces/poke-api.interface';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +16,24 @@ export class App {
   pokeAPI = inject(PokeAPI);
   readonly searchresultbytype = signal('');
   readonly searchresult = signal('');
+  pokecardsAPIResults: Result[] = [];
   pokecards: IPokecard[] = [];
   constructor() {
     this.pokecards = this.pokeAPI.getdata();
   }
+  extractPokecardID(results: Result[]): string[] {
+    return results.map((result) => result.id);
+  }
   onSearchResultAPI($event: string) {
     console.log($event);
-    this.pokeAPI.searchPokecardsByName($event).subscribe({next: (response) => {console.log(response)}});
+    this.pokeAPI.searchPokecardsByName($event).subscribe({
+      next: (response) => {
+        this.pokecardsAPIResults = response.results;
+        const ids = this.extractPokecardID(response.results);
+        this.pokeAPI.searchPokecardBatch(ids);
+      },
+    });
+    console.log(this.pokecardsAPIResults);
   }
   onSearchResultType($event: string) {
     const input = $event;
